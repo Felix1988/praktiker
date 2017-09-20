@@ -1,0 +1,22 @@
+<div class="AknDashboardButtons">
+    {% for link in links %}
+    	{% if link.click is defined %}
+    		<a href="javascript:{{ link.click }}" class="AknDashboardButtons-item" title="{{ link.label|trans }}">
+    	{% else %}
+        	<a href="{{ path(link.route) }}" class="AknDashboardButtons-item" title="{{ link.label|trans }}">
+        {% endif %}
+            <img class="AknDashboardButtons-image" src="{{ asset('bundles/pimdashboard/images/' ~ link.image) }}"/>
+            {{ link.label|trans }}
+        </a>
+    {% endfor %}
+</div>
+
+ <script type="text/javascript">
+var addProd = function(){
+	require(['jquery', 'pim/product-create'], function ($, ProductCreate) {
+                'use strict';
+                ProductCreate.openProductModal();
+	});
+};
+</script>
+        
